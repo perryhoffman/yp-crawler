@@ -1,5 +1,6 @@
 var Sequelize   = require("sequelize");
 var Sql         = new Sequelize('crawler', 'root', 'root', {
+  dialect : 'mysql',
   host    : 'localhost',
   port    : 3306
 });

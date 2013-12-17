@@ -12,7 +12,7 @@ var Base_m      = require('../models/base_m'),
 // 1) Crawl Directory
 exports.crawlDirectory = crawlDirectory =  function(count, directory, location, keyword) {
   var directoryName = Conf.directories[directory];
-  var url = Conf.directoryUrl(directory, count, location, keyword);
+  var url           = Conf.directoryUrl(directory, count, location, keyword);
 
   console.log('Starting to crawl ' + directoryName + ' page ' + count + '! ' +
       'Remember to stop / cancel at any time, press CTRL + C');
@@ -21,11 +21,9 @@ exports.crawlDirectory = crawlDirectory =  function(count, directory, location, 
     if(err && err.continue) return continueCrawl(count, directory, location, keyword);
     if(err) return console.log('Stopping: Error crawling directory', err);
 
-    console.log('Results ', results);
     // Move on to crawling sites with list
-    //crawlSites(results); // Used for crawling the website as well
+    //crawlSites(results);
 
-    // Start the crawl again, but on the next page
     continueCrawl(count, directory, location, keyword);
   });
 
@@ -75,7 +73,7 @@ exports.crawlDirectory = crawlDirectory =  function(count, directory, location, 
 
   function continueCrawl(count, directory, location, keyword) {
 
-    // Recusion, start on the next page
+    // Increase pg number.
     setTimeout(function(){
       count = count + 1;
       crawlDirectory(count, directory, location, keyword);
@@ -86,7 +84,7 @@ exports.crawlDirectory = crawlDirectory =  function(count, directory, location, 
 
 // 2) Crawl Site. Currently not being used.
 exports.crawlSites = crawlSites = function(listing) {
-  console.log('Crawling sites');
+
   // Loop through each listing
   _.each(listing, function(company) {
     Async.waterfall([getSiteContent, findCareersUrl, crawlCareersUrl], function (err, result) {
