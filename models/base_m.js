@@ -1,4 +1,11 @@
 var Sequelize   = require("sequelize");
+var Conf        = require("../conf");
+var Sql         = new Sequelize(Conf.db.name, Conf.db.user, Conf.db.pw, {
+  dialect : 'mysql',
+  host    : Conf.db.host,
+  port    : Conf.db.port
+});
+
 var Sql         = new Sequelize('crawler', 'root', 'root', {
   dialect : 'mysql',
   host    : 'localhost',
@@ -80,3 +87,8 @@ exports.traces = Traces = Sql.define('traces', {
     }
   }
 });
+
+// Database synchronization
+Sql.sync()
+    .success(function() {})
+    .error(function(err){ console.log('SQL sync error: ', err); });

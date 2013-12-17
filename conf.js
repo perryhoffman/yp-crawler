@@ -1,6 +1,14 @@
 module.exports = function () {
   conf = {};
 
+  conf.db = {
+    name: 'crawler',
+    user: 'root',
+    pw: 'root',
+    host: 'localhost',
+    port: 3306
+  };
+
   conf.directories = [
   'Yellow Pages'
   ];
@@ -15,7 +23,6 @@ module.exports = function () {
         break;
     }
   };
-
   conf.careerKeywords = [
     'Careers',
     'Jobs',
@@ -23,7 +30,6 @@ module.exports = function () {
     'Job Opportunities',
     'Available Positions'
   ];
-
   conf.bannedCareerChars = {
     '#': 1,
     '/': 2

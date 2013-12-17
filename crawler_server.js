@@ -18,10 +18,12 @@ program
       async.series([
         function(callback){
           var list = Conf.directories;
-          console.log('Choose directory:');
-          program.choose(list, function(i){
-            callback(null, i);
-          });
+          setTimeout(function(){
+            console.log('\n \n Choose directory:');
+            program.choose(list, function(i){
+              callback(null, i);
+            });
+          }, 1500);
         },
         function(callback){
           program.prompt('Location: ', function(location){
