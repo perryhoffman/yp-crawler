@@ -1,7 +1,7 @@
 yp-crawler
 ==========
 
-A basic crawler for yellow pages built with NodeJS
+A basic crawler for yellow pages. Built with NodeJS
 
 ## Getting Started
 
